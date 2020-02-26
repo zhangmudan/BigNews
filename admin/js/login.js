@@ -25,7 +25,10 @@ $(function () {
       .trim();
     // 3.对用户输入的内容进行非空判断
     if (user == "" || psd == "") {
-      alert("用户名或密码为空,请重新输入");
+      //alert 体验糟糕,更换为模态框更加友好
+      // alert("用户名或密码为空,请重新输入");
+      $('.modal').modal()
+      $('.modal-body p').html("用户名或密码为空,请重新输入")
     } else {
       $.ajax({
         type: "post",
@@ -37,6 +40,17 @@ $(function () {
         dataType: "json",
         success: function (response) {
           console.log(response);
+          if (response.code === 200) {
+            //把返回的token通过本地存储保存起来,其他接口需要用到
+            localStorage.setItem('token', response.token)
+            //跳转到其他页面
+            location.href = './index.html'
+          } else {
+            //登录失败
+            $('.modal').modal()
+            $('.modal-body p').html(response.msg)
+          }
+
         }
       });
     }
