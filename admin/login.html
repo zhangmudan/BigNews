@@ -1,43 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>大事件-后台登录页</title>
+    <link rel="stylesheet" type="text/css" href="css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="css/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <!-- 引入bootstrap的css文件 -->
+    <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css" />
+    <!-- 引入jq文件 -->
+    <script src="./libs/jquery-1.12.4.min.js"></script>
+    <!-- 引入bootstrap的js文件 -->
+    <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>大事件-后台登录页</title>
-  <link rel="stylesheet" type="text/css" href="css/reset.css" />
-  <link rel="stylesheet" type="text/css" href="css/iconfont.css" />
-  <link rel="stylesheet" type="text/css" href="css/main.css" />
-  <!-- 引入bootstrap的css文件 -->
-  <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.min.css" />
-  <!-- 引入jq文件 -->
-  <script src="./libs/jquery-1.12.4.min.js"></script>
-  <!-- 引入bootstrap的js文件 -->
-  <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
-</head>
+  <body>
+    <div class="main_wrap">
+      <div class="header">
+        <a href="#" class="logo"><img src="images/logo.png" alt=""/></a>
+        <div class="copyright">
+          CopyRight © 2019 深圳百秀信息技术股份有限公司<br />All Rights Reserved
+        </div>
+      </div>
 
-<body>
-  <div class="main_wrap">
-    <div class="header">
-      <a href="#" class="logo"><img src="images/logo.png" alt="" /></a>
-      <div class="copyright">
-        CopyRight © 2019 深圳百秀信息技术股份有限公司<br />All Rights Reserved
+      <div class="login_form_con">
+        <div class="login_title"></div>
+        <form class="login_form">
+          <i class="iconfont icon-user"></i>
+          <i class="iconfont icon-key"></i>
+          <input type="text" class="input_txt" placeholder="邮箱/手机号" />
+          <input type="password" class="input_pass" placeholder="密码" />
+          <input type="submit" class="input_sub" value="登 录" />
+        </form>
       </div>
     </div>
+    <!-- 登录页的js代码 -->
+    <script>
+      //目标:登录页实现
+      //步骤:
+      //1.给登录按钮绑定点击事件(注意阻止默认行为)
+      //2.在点击之间内部获取用户名和密码
+      //3.对用户输入的内容进行非空判断
+      //4.不为空的情况小才发生ajax请求
+      //5.打印
+      //   #### 1、用户登录
 
-    <div class="login_form_con">
-      <div class="login_title"></div>
-      <form class="login_form">
-        <i class="iconfont icon-user"></i>
-        <i class="iconfont icon-key"></i>
-        <input type="text" class="input_txt" placeholder="邮箱/手机号" />
-        <input type="password" class="input_pass" placeholder="密码" />
-        <input type="submit" class="input_sub" value="登 录" />
-      </form>
-    </div>
-  </div>
+      // 请求地址：/admin/user/login
 
-</body>
+      // 请求方式：post
 
+      // 请求参数：
+
+      // | 名称     | 类型   | 说明            |
+      // | -------- | ------ | --------------- |
+      // | username | string | 用户名（admin） |
+      // | password | string | 密码(123456)    |
+    </script>
+  </body>
 </html>
