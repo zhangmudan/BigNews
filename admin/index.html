@@ -81,7 +81,37 @@
       <!-- 右侧主体内容 -->
       <div class="main" id="main_body"></div>
     </div>
+    <!-- 通过Bootstrap引入结构 -->
+    <div class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">温馨提示</h4>
+          </div>
+          <div class="modal-body">
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn tologin" data-dismiss="modal">
+              去登录
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
     <!-- 引入首页js代码 -->
     <script src="./js/index.js"></script>
+    <!-- 引入封装js -->
+    <script src="./js/http.js"></script>
   </body>
 </html>

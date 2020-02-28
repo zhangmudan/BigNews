@@ -11,10 +11,10 @@ $(function () {
     type: "get",
     url: "http://localhost:8080/api/v1/admin/user/info",
     //jq 的ajax 请求头
-    headers: {
-      //接口文档要求,不加会返回403
-      Authorization: localStorage.getItem('token')
-    },
+    // headers: {
+    //   //接口文档要求,不加会返回403
+    //   Authorization: localStorage.getItem('token')
+    // },
     dataType: "json",
     success: function (response) {
       // console.log(response);
