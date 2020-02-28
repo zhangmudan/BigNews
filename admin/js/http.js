@@ -17,8 +17,8 @@
         // success:function(){},
         //请求失败
         error: function () {
-            $('.modal').modal()
-            $('.modal-body p').html("数据获取失败,请重新登录!")
+            $('.modal').modal();
+            $('.modal-body p').html("数据获取失败,请重新登录!");
             // location.href = './login.html'
         },
         //请求完成
@@ -27,14 +27,14 @@
             NProgress.done();
         },
 
-    })
+    });
     //点击登录跳转到登录页
     $('.tologin').click(function () {
-        location.href = './login.html'
-    })
+        location.href = './login.html';
+    });
     //把接口地址封装
     //基地址
-    const baseUrl = 'http://localhost:8080/api/v1'
+    const baseUrl = 'http://localhost:8080/api/v1';
     const urls = {
         //  用户登录
         user_login: `${baseUrl}/admin/user/login`,
@@ -100,7 +100,7 @@
         post_comment: `${baseUrl}/index/post_comment`,
         //  评论列表
         get_comment: `${baseUrl}/index/get_comment`,
-    }
+    };
     //把局部变量添加到全局
-    w.urls = urls
+    w.urls = urls;
 })(window)
