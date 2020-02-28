@@ -6,6 +6,20 @@ $(function () {
   // |   名称   |  类型  | 说明         |
   // | nickname | string | 用户昵称     |
   // | userPic  | string | 用户图片地址 |
+  //每次ajax请求前,添加请求头
+  $.ajaxSetup({
+    //请求失败
+    error: function () {
+      //添加模态框
+      $('.modal').modal();
+      $('.modal-body p').html("数据获取失败,请重新登录!");
+      // location.href = './login.html'
+      //点击登录跳转到登录页
+      $('.tologin').click(function () {
+        location.href = './login.html';
+      });
+    },
+  });
   //用户信息
   $.ajax({
     type: "get",
@@ -41,6 +55,7 @@ $(function () {
   })
   //左侧level01高亮,排他思想
   $('.level01').click(function () {
+    //不需要阻止跳转
     //高亮
     $(this).addClass('active').siblings().removeClass('active')
     //针对文章有二级菜单特殊处理,判断当前点击元素是否有level02的兄弟

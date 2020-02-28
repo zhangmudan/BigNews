@@ -15,20 +15,9 @@
                 // 显示加载条
                 NProgress.start();
             }
-
         },
         //请求成功
         // success:function(){},
-        //请求失败
-        error: function () {
-            $('.modal').modal();
-            $('.modal-body p').html("数据获取失败,请重新登录!");
-            // location.href = './login.html'
-            //点击登录跳转到登录页
-            $('.tologin').click(function () {
-                location.href = './login.html';
-            });
-        },
         //请求完成
         complete: function () {
             if (w.NProgress) {
@@ -36,7 +25,6 @@
                 NProgress.done();
             }
         },
-
     });
 
     //把接口地址封装
