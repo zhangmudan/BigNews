@@ -39,4 +39,26 @@ $(function () {
     //退出后跳转到登录页
     location.href = './login.html'
   })
+  //左侧level01高亮,排他思想
+  $('.level01').click(function () {
+    //高亮
+    $(this).addClass('active').siblings().removeClass('active')
+    //针对文章有二级菜单特殊处理,判断当前点击元素是否有level02的兄弟
+    if ($(this).next().hasClass('level02')) {
+      //切换显示菜单
+      $(this).next().slideToggle();
+      //小箭头添加类名旋转
+      $(this).find('b').toggleClass('rotate0');
+      //第一个li默认选中
+      $(this).next().find('li').eq(0).addClass('active')
+    } else {
+      //如果点击的没有二级菜单,就应该把原本的黄色去掉
+      $('.level02 li').removeClass('active')
+    }
+  })
+  //左侧level02高亮,排他思想
+  $('.level02 li').click(function () {
+    // e.preventDefault();
+    $(this).addClass('active').siblings().removeClass('active')
+  });
 })

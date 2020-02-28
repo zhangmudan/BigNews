@@ -10,8 +10,12 @@
         },
         //发送ajax请求,进度条
         beforeSend: function () {
-            // 显示加载条
-            NProgress.start();
+            //NProgress默认添加到window上,如果页面没有添加NProgress插件就不会被触发
+            if (w.NProgress) {
+                // 显示加载条
+                NProgress.start();
+            }
+
         },
         //请求成功
         // success:function(){},
@@ -20,18 +24,21 @@
             $('.modal').modal();
             $('.modal-body p').html("数据获取失败,请重新登录!");
             // location.href = './login.html'
+            //点击登录跳转到登录页
+            $('.tologin').click(function () {
+                location.href = './login.html';
+            });
         },
         //请求完成
         complete: function () {
-            // 隐藏加载条
-            NProgress.done();
+            if (w.NProgress) {
+                // 隐藏加载条
+                NProgress.done();
+            }
         },
 
     });
-    //点击登录跳转到登录页
-    $('.tologin').click(function () {
-        location.href = './login.html';
-    });
+
     //把接口地址封装
     //基地址
     const baseUrl = 'http://localhost:8080/api/v1';
@@ -41,11 +48,11 @@
         //  获取用户信息
         user_info: `${baseUrl}/admin/user/info`,
         //    获取用户详情
-        user_detail: `${baseUrl}/admin/user / detail`,
+        user_detail: `${baseUrl}/admin/user/detail`,
         //  编辑用户信息
-        user_edit: `${baseUrl}/admin/user / edit`,
+        user_edit: `${baseUrl}/admin/user/edit`,
         //  所有文章类别
-        categor_list: `${baseUrl}/admin/category / list`,
+        categor_list: `${baseUrl}/admin/category/list`,
         //  新增文章类别
         category_add: `${baseUrl}/admin/category/add`,
         //  根据id查询指定文章类别
