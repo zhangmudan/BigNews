@@ -9,7 +9,7 @@ $(function () {
   //用户信息
   $.ajax({
     type: "get",
-    url: "http://localhost:8080/api/v1/admin/user/info",
+    url: urls.user_info,
     //jq 的ajax 请求头
     // headers: {
     //   //接口文档要求,不加会返回403
