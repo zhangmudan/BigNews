@@ -34,7 +34,7 @@ $(function () {
     // console.dir(this.files[0]);
     //获取浏览器本地缓存中的文件地址
     const changeUrl = URL.createObjectURL(this.files[0]);
-    // 给图片添加缓存地址
+    // 给图片添加缓存地址,预览图片
     $('.user_pic').attr('src', changeUrl)
   })
   //   #### 编辑用户信息
@@ -67,7 +67,17 @@ $(function () {
       success: function (response) {
         // console.log(response);
         if (response.code === 200) {
-          alert(response.msg)
+          // alert(response.msg)
+          //刷新父级页面-体验不佳
+          // window.parent.location.reload()
+          //获取页面预览头像
+          const imgeUrl = $('.user_pic').attr('src')
+          //获取表单的文本内容
+          const nickname = $('input.nickname').val()
+          //不刷新更改父级页面的图片
+          window.parent.$('.user_info img,.user_center_link img').attr('src', imgeUrl)
+          //不刷新更改父级页面的文本
+          window.parent.$('.user_info strong').html(nickname)
         }
 
       }
