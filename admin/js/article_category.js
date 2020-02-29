@@ -49,6 +49,30 @@ $(function () {
 
       }
     });
+    //删除文章
+    $('.category_table>tbody').on('click', '.del', function () {
+      // 请求地址：/admin/category/delete
+      // 请求方式：post  
+      // 请求参数：   
+      // | 名称 | 类型   | 说明   |
+      // | id   | number | 文章id |     
+      // 返回数据：     
+      // | 名称 |  类型  | 说明                              |
+      // | msg  | string | 文字信息  ‘删除成功’   ‘删除失败’ |
+      $.ajax({
+        type: "post",
+        url: urls.category_delete,
+        data: {
+          id: $(this).attr('data-id')
+        },
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+
+        }
+      });
+
+    })
 
 
 
