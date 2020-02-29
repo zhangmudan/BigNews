@@ -16,21 +16,26 @@ $(function () {
     dataType: "json",
     success: function (response) {
       // console.log(response);
-      $('.username').val(response.data.username)
-      $('.nickname').val(response.data.nickname)
-      $('.email').val(response.data.email)
-      $('.password').val(response.data.password)
-      $('.user_pic').attr('src', response.data.userPic)
+      // $('.username').val(response.data.username);
+      // $('.nickname').val(response.data.nickname);
+      // $('.email').val(response.data.email);
+      // $('.password').val(response.data.password);
+      //优化代码 input.类名 交集选择器
+      const obj = response.data;
+      for (let key in obj) {
+        $(`input.${key}`).val(obj[key])
+      }
+      $('.user_pic').attr('src', response.data.userPic);
     }
   });
   //给选择文件注册change事件
   $('#exampleInputFile').change(function () {
     //获取图片信息
     // console.dir(this.files[0]);
-    //获取图片缓存地址
+    //获取浏览器本地缓存中的文件地址
     const changeUrl = URL.createObjectURL(this.files[0]);
     // 给图片添加缓存地址
-    $('.user_pic').attr('src', URL.createObjectURL(this.files[0]))
+    $('.user_pic').attr('src', changeUrl)
   })
   //   #### 编辑用户信息
   // 请求地址：/admin/user/edit
@@ -45,14 +50,15 @@ $(function () {
   // 返回数据：
   // | 名称 |  类型  | 说明                              |
   // | msg  | string | 文字信息  ‘修改成功’   ‘修改失败’ |
-  $('#form').on('submit', function (e) {
+  $('.btn-edit').click(function (e) {
     //阻止submit的默认跳转行为
     e.preventDefault()
     $.ajax({
       type: "post",
       url: urls.user_edit,
-      //使用FormData上传数据
-      data: new FormData(this),
+      //使用FormData表单中的数据自动添加到FormData对象中,可直接用于上传
+      //this代表当前点击的按钮
+      data: new FormData(this.form),
       //禁用掉自动添加请求头
       contentType: false,
       //禁用掉自动把参数转换为字符串
