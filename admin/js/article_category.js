@@ -72,14 +72,12 @@ $(function () {
       // 返回数据：
       // | 名称 |  类型  | 说明                              |
       // | msg  | string | 文字信息  ‘增加成功’   ‘增加失败’ |
-      const name = $('#inputEmail3').val();
-      const slug = $('#inputPassword3').val();
       $.ajax({
         type: "post",
         url: urls.category_add,
         data: {
-          name: name,
-          slug: slug,
+          name: $('#inputEmail3').val(),
+          slug: $('#inputPassword3').val(),
         },
         dataType: "json",
         success: function (response) {

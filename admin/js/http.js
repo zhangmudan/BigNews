@@ -66,7 +66,7 @@
         //  删除文章类别
         category_delete: `${baseUrl}/admin/category/delete`,
         //  文章搜索
-        article_query: `${baseUrl}v/admin/article/query`,
+        article_query: `${baseUrl}/admin/article/query`,
         //  发布文章
         article_publish: `${baseUrl}/admin/article/publish`,
         //  根据id获取文章信息
