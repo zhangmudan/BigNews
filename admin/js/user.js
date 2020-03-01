@@ -16,10 +16,10 @@ $(function () {
     dataType: "json",
     success: function (response) {
       // console.log(response);
-      // $('.username').val(response.data.username);
-      // $('.nickname').val(response.data.nickname);
-      // $('.email').val(response.data.email);
-      // $('.password').val(response.data.password);
+      // $('input.username').val(response.data.username);
+      // $('input.nickname').val(response.data.nickname);
+      // $('input.email').val(response.data.email);
+      // $('input.password').val(response.data.password);
       //优化代码 input.类名 交集选择器
       const obj = response.data;
       for (let key in obj) {

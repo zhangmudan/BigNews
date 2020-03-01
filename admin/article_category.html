@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/iconfont.css">
     <link rel="stylesheet" href="css/main.css">
     <script src="./libs/jquery-1.12.4.min.js"></script>
+    <!-- bootstrap依赖jQuery所以要注意顺序 -->
     <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
     <!-- 引入模板引擎js文件 -->
     <script src="./libs/template-web.js"></script>
@@ -35,7 +36,7 @@
                         <td>奇趣事</td>
                         <td>funny</td>
                         <td class="text-center">
-                            <a href="javascript:void(0)" data-toggle="modal" class=" btn btn-info btn-xs edit">编辑</a>
+                            <a href="javascript:void(0)"   class=" btn btn-info btn-xs edit">编辑</a>
                             <a href="javascript:void(0)" class="btn btn-danger btn-xs del">删除</a>
                         </td>
                     </tr>
@@ -43,8 +44,8 @@
                 <tfoot>
                     <tr>
                         <td colspan="3" class="text-center">
-                            <a href="javascript:void(0)" class="btn btn-success" id="xinzengfenlei" data-toggle="modal"
-                                data-target="#myModal">新增分类</a>
+                            <a href="javascript:void(0)" class="btn btn-success" id="btn_add" 
+                                >新增分类</a>
                         </td>
                     </tr>
                 </tfoot>
@@ -52,32 +53,38 @@
         </div>
     </div>
     <!-- bs模态框 -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+       <div id="myModal" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title" id="exampleModalLabel">新增分类</h4>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group">
-                  <label for="recipient-name" class="control-label">分类名称</label>
-                  <input type="text" class="form-control" id="recipient-name" autocomplete="off">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">文章分类操作</h4>
                 </div>
-                <div class="form-group">
-                  <label for="message-text" class="control-label">分类别名</label>
-                  <input type="text" class="form-control" id="message-text" autocomplete="off">
+                <div class="modal-body">
+                    <!-- 表单结构放到模态框主体中 modal-body -->
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">分类名称</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputEmail3" placeholder="名称" autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">分类别名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="inputPassword3" placeholder="别名" autocomplete="off">
+                            </div>
+                        </div>
+                    </form>
                 </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default close" data-dismiss="modal">取消</button>
-              <button type="button" class="btn btn-primary add">新增</button>
-            </div>
-          </div>
-        </div>
-      </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary ">新增</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
       <!-- 引入封装接口js -->
     <script src="./js/http.js"></script>
       <!-- 引入js文件 -->
