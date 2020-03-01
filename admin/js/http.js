@@ -19,15 +19,20 @@
         //请求成功
         // success:function(){},
         //请求失败
-        error: function () {
-            //添加模态框
-            $('.modal').modal();
-            $('.modal-body p').html("数据获取失败,请重新登录!");
-            // location.href = './login.html'
-            //点击登录跳转到登录页
-            $('.tologin').click(function () {
-                location.href = './login.html';
-            });
+        error: function (xhr) {
+            if (xhr.status === 400) {
+                alert('请输入正确的数据')
+            } else if (xhr.status === 403) {
+                //添加模态框
+                $('.modal').modal();
+                $('.modal-body p').html("数据获取失败,请重新登录!");
+                // location.href = './login.html'
+                //点击登录跳转到登录页
+                $('.tologin').click(function () {
+                    location.href = './login.html';
+                });
+            }
+
         },
         //请求完成
         complete: function () {
