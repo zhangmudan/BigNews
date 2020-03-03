@@ -98,5 +98,40 @@ $(function () {
     });
   }
 
+  //删除文章 数据为动态生成需要事件委托
+  $('tbody').on('click', '.delete', function () {
+    const res = confirm('您确定要删除吗?')
+    if (res) {
+      const id = $(this).attr('data-id')
+      // console.log(id);
+      // 请求地址：/admin/article/delete
+      // 请求方式：post
+      // 请求参数：
+      // | 名称 | 类型   | 说明   |
+      // | id   | number | 文章id |
+      // 返回数据：
+      // | 名称 |  类型  | 说明                              |
+      // | msg  | string | 文字信息  ‘删除成功’   ‘删除失败’ |
+      $.ajax({
+        type: "post",
+        url: urls.article_delete,
+        data: {
+          id: id
+        },
+        dataType: "json",
+        success: function (response) {
+          console.log(response);
+          if (response.code === 204) {
+            alert('删除成功')
+            renList()
+          }
+
+        }
+      });
+    }
+
+
+  })
+
 
 })
