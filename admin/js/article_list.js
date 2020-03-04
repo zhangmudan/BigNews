@@ -127,7 +127,11 @@ $(function () {
             $('.modal-body p').html(response.msg);
             //修复: 如果页面剩最后一条,删除后会出bug 所以需要特殊处理
             if ($('tbody tr').length === 1) {
-              page = page - 1
+              if (page != 1) {
+                page = page - 1
+              } else {
+                page = 1
+              }
             }
             renList();
           };

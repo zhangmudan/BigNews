@@ -13,6 +13,11 @@
     <script src="./libs/jquery-1.12.4.min.js"></script>
     <!-- 模板引擎 -->
     <script src="./libs/template-web.js"></script>
+    <!-- 引入日期插件 -->
+    <link rel="stylesheet" href="./libs/jedate/css/jedate.css" />
+    <script src="./libs/jedate/js/jedate.js"></script>
+    <!-- 引入富文本插件 -->
+    <script src="./libs/tinymce/tinymce.min.js"></script>
   </head>
 
   <body>
@@ -42,8 +47,15 @@
               >文章封面：</label
             >
             <div class="col-sm-10">
-              <img src="images/pic06.jpg" class="article_cover" />
-              <input name="cover" type="file" id="inputCover" />
+              <label for="inputCover">
+                <img src="images/pic06.jpg" class="article_cover" />
+              </label>
+              <input
+                name="cover"
+                type="file"
+                id="inputCover"
+                style="display: none;"
+              />
             </div>
           </div>
           <div class="form-group">
@@ -62,13 +74,17 @@
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">发布时间：</label>
-            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+              <input class="form-control" id="myData" type="text" name="date" />
+            </div>
           </div>
           <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label"
               >文章内容：</label
             >
-            <div class="col-sm-10"></div>
+            <div class="col-sm-10">
+              <textarea id="mytextarea"></textarea>
+            </div>
           </div>
           <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
@@ -83,9 +99,43 @@
         </form>
       </div>
     </div>
+    <!-- 通过Bootstrap引入结构 -->
+    <div class="modal fade" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title">温馨提示</h4>
+          </div>
+          <div class="modal-body">
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">
+              关闭
+            </button>
+          </div>
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
     <!-- 引入接口封装js -->
     <script src="./js/http.js"></script>
     <!-- 引入页面js -->
     <script src="./js/article_release.js"></script>
+    <!-- 下拉框模板 -->
+    <script id="scRelea" type="text/html">
+      {{each data}}
+      <option value='{{$value.id}}'>{{$value.name}}</option>
+      {{/each}}
+    </script>
   </body>
 </html>
