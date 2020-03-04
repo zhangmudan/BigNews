@@ -6,7 +6,7 @@ $(function () {
     dataType: "json",
     success: function (response) {
       if (response.code === 200) {
-        const editArr = template('scEdit', response.data);
+        const editArr = template('scEdit', response);
         $('.category').html(editArr)
       }
     }
@@ -17,8 +17,14 @@ $(function () {
   const seUrl = location.search
   // console.log(seUrl);?id=
   //截取等号后面的数据
-  const id = seUrl.slice(4)
+  // const id = seUrl.slice(4)
+  const id = seUrl.split('=')[1]
   // console.log(id);
+
+  if (id === undefined) {
+    alert('页面没有id,跳转到首页')
+    location.href = './index.html'
+  }
   // 请求地址：/admin/article/search
   // 请求方式：get
   // 请求参数：
@@ -44,9 +50,18 @@ $(function () {
       if (response.code === 200) {
         $('#inputTitle').val(response.data.title)//标题
         $('.article_cover').attr('src', response.data.cover)//图片
-        $('.dat').text(response.data.date)//日期
+        jeDate("#myData", {
+          //是否初始化事件
+          isinitVal: true,
+          // 是否显示农历节日
+          festival: true,
+          //弹出层的层级高度
+          zIndex: 2099,
+          format: response.data.date
+        });
+        // $('.dat').text(response.data.date)//日期
         $('.content').text(response.data.content)//内容
-        $('select.category').val(response.data.categoryId)//类别
+        $('.category').val(response.data.categoryId)//类别
       }
 
     }
@@ -59,5 +74,7 @@ $(function () {
     // console.dir(file);
     $('.article_cover').attr('src', chaUrl)
   })
+
+
 
 })
